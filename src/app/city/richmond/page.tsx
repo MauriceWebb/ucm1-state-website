@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "City of Richmond",
+  description: "City page for Richmond, VA",
+};
 export default function RichmondPage() {
-  return <main className="flex-grow container py-6">RICHMOND PAGE</main>;
+  return null;
 }

@@ -61,7 +61,10 @@ export default function QuestionForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-0">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8 mt-0 w-full"
+      >
         <div className="flex space-x-4">
           <FormField
             control={form.control}

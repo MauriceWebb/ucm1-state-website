@@ -1,102 +1,59 @@
+"use client";
 import QuestionForm from "@/components/QuestionForm";
 import Image from "next/image";
 import Link from "next/link";
+import { stateCopy as data } from "./_data/copy";
 
-const statsList = [
-  { label: "Population", stat: "XXXX" },
-  { label: "Jobs", stat: "XXXX" },
-  { label: "GDP", stat: "XXXX" },
-  { label: "Sq.Ft.", stat: "XXXX" },
-  { label: "LIS Score", stat: "XXXX" },
-];
-
-const subSections = [
-  {
-    title: "Geographic Section",
-    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur modi consequuntur ipsam cupiditate eveniet odit error mollitia rem, magnam in dolores doloremque molestiae cumque explicabo culpa quas alias tempora ullam sequi sint nulla. Voluptatum doloribus consequuntur eum excepturi saepe aperiam, hic, maxime tenetur at optio laboriosam, aspernatur ut odit! Culpa qui perferendis necessitatibus praesentium! Nostrum ex ducimus iusto at rerum similique voluptatum aspernatur reiciendis culpa nesciunt nemo sequi, ipsa velit.",
-    button: { text: "Discover more", href: "/" },
-    img: "",
-  },
-  {
-    title: "Demographic Section",
-    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur modi consequuntur ipsam cupiditate eveniet odit error mollitia rem, magnam in dolores doloremque molestiae cumque explicabo culpa quas alias tempora ullam sequi sint nulla. Voluptatum doloribus consequuntur eum excepturi saepe aperiam, hic, maxime tenetur at optio laboriosam, aspernatur ut odit! Culpa qui perferendis necessitatibus praesentium! Nostrum ex ducimus iusto at rerum similique voluptatum aspernatur reiciendis culpa nesciunt nemo sequi, ipsa velit.",
-    button: { text: "Discover more", href: "/" },
-    img: "",
-  },
-  {
-    title: "Economic Section",
-    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur modi consequuntur ipsam cupiditate eveniet odit error mollitia rem, magnam in dolores doloremque molestiae cumque explicabo culpa quas alias tempora ullam sequi sint nulla. Voluptatum doloribus consequuntur eum excepturi saepe aperiam, hic, maxime tenetur at optio laboriosam, aspernatur ut odit! Culpa qui perferendis necessitatibus praesentium! Nostrum ex ducimus iusto at rerum similique voluptatum aspernatur reiciendis culpa nesciunt nemo sequi, ipsa velit.",
-    button: { text: "Discover more", href: "/" },
-    img: "",
-  },
-];
-
-const govList = [
-  {
-    title: "Governor",
-    name: "Glenn Youngkin",
-    href: "https://www.governor.virginia.gov",
-    img: "/youngkin_glenn_governor_portrait_2023.jpg",
-    url: "https://www.governor.virginia.gov/media/governorvirginiagov/governor-of-virginia/images/youngkin_glenn_governor_portrait_2023.jpg",
-  },
-  {
-    title: "Lieutenant Governor",
-    name: "Winsome Earle-Sears",
-    href: "https://www.ltgov.virginia.gov",
-    img: "/Lt-Gov.jpg",
-    url: "https://www.ltgov.virginia.gov/media/governorvirginiagov/lieutenant-governor/about/images/Lt-Gov.jpg",
-  },
-  {
-    title: "Attornet General",
-    name: "Jason S. Miyares",
-    href: "https://www.oag.state.va.us",
-    img: "/Miyares-headshot-1.jpg",
-    url: "https://www.oag.state.va.us/images/Miyares-headshot-1.jpg",
-  },
-];
+const subSections = [data.geo, data.demo, data.eco];
 
 export default function Home() {
   return (
-    <main className="flex-grow container flex flex-col mx-auto">
-      <section className="flex flex-wrap sm:flex-nowrap space-x-0 sm:space-x-6 my-6 mt-12 space-y-6 sm:space-y-0">
-        <div className="basis-3/5 min-w-3/5 flex-grow min-h-[350px] bg-green-200 rounded-xl overflow-hidden">
+    <main className="flex-grow container flex flex-col mx-auto px-3 sm:px-0">
+      <section className="flex flex-col lg:flex-row lg:space-x-6 my-6 mt-12">
+        <div className="w-full lg:w-1/2 min-h-[350px] flex-grow bg-green-200 rounded-xl overflow-hidden lg:flex mb-6 lg:mb-0 hidden">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3219325.5440382487!2d-79.42091505!3d38.00343195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884cd670bdbcb2cd%3A0xc04e4149b746a695!2sVirginia!5e0!3m2!1sen!2sus!4v1698552744042!5m2!1sen!2sus"
-            width="100%"
-            height="100%"
+            // width="100%"
+            // height="100%"
             style={{ border: 0 }}
             allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            className="flex-grow"
           ></iframe>
         </div>
-        <aside className="basis-2/5 w-2/5 flex-grow flex flex-col space-y-6">
+        <aside className="w-full lg:basis-1/2 lg:w-1/2 flex-grow flex flex-col justify-between space-y-3">
           <div className="space-y-3">
-            <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl">
-              State of Virginia
+            <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl mb-6">
+              {data.aside.title}
             </h3>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Reiciendis quibusdam ducimus porro doloremque illum vero sed, qui
-              numquam itaque adipisci molestias tempore magni earum vel. Error
-              id maxime esse recusandae!
-            </p>
+            <div className="w-full lg:w-1/2 min-h-[350px] flex-grow bg-green-200 rounded-xl overflow-hidden flex mb-6 lg:mb-0 lg:hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3219325.5440382487!2d-79.42091505!3d38.00343195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884cd670bdbcb2cd%3A0xc04e4149b746a695!2sVirginia!5e0!3m2!1sen!2sus!4v1698552744042!5m2!1sen!2sus"
+                // width="100%"
+                // height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="flex-grow"
+              ></iframe>
+            </div>
+            <p className="">{data.aside.brief}</p>
           </div>
           <div className="flex flex-col space-y-3">
             <h4 className="font-semibold text-lg">Top 5 places to visit:</h4>
-            <div className="flex justify-between">
-              <ol type="1" className="list-decimal ml-5">
-                <li>Lorem ipsum dolor sit.</li>
-                <li>Lorem, ipsum dolor.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem, ipsum.</li>
-                <li>Lorem ipsum dolor sit.</li>
+            <div className="flex flex-col xl:flex-row justify-between">
+              <ol type="1" className="list-decimal ml-5 mb-6 xl:mb-0">
+                {data.aside.list.map((a, k) => (
+                  <li key={k}>{a}</li>
+                ))}
               </ol>
               <Link
-                href="/"
-                className="py-2 px-4 bg-red-600 text-white rounded-xl mt-auto"
+                href={data.aside.button.href}
+                className="py-2 px-4 bg-red-600 text-white rounded-xl mt-4 md:mt-auto w-fit"
               >
-                Discover more
+                {data.aside.button.text}
               </Link>
             </div>
           </div>
@@ -104,10 +61,12 @@ export default function Home() {
       </section>
 
       <section className="flex min-h-[80px] items-center my-6">
-        <ul className="flex items-center w-full justify-around overflow-x-auto">
-          {statsList.map((item, k) => (
+        <ul className="flex flex-wrap items-center w-full justify-around- overflow-x-auto- space-y-3 xl:space-y-0">
+          {data.statList.map((item, k) => (
             <li key={k} className="flex basis-64 w-64 space-x-4">
-              <div className="rounded-xl h-[60px] w-[60px] bg-gray-200"></div>
+              <div className="rounded-xl h-[60px] w-[60px] bg-[#00297b] text-white flex justify-center items-center text-3xl">
+                {item.icon}
+              </div>
               <div className="flex flex-col justify-center">
                 <h4 className="text-lg font-semibold">{item.label}</h4>
                 <p>{item.stat}</p>
@@ -121,63 +80,100 @@ export default function Home() {
         <div
           className={`h-[450px] bg-gray-200 rounded-xl`}
           style={{
-            backgroundImage: `url("/Virginia-road-sign.jpg")`,
+            backgroundImage: `url("/${data.hero.img.src}")`,
             backgroundPosition: "30% 25%",
             backgroundSize: "cover",
           }}
         ></div>
-        <p className="leading-normal">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis vel
-          aut perspiciatis voluptatem eligendi temporibus, reprehenderit,
-          voluptate, consequatur quo magni ratione recusandae. Sapiente error,
-          rem quis iure, dolores, laboriosam incidunt distinctio minus eveniet
-          accusamus architecto in consectetur repudiandae vero unde explicabo
-          aliquam amet ullam ipsam atque quisquam. Molestias tempora mollitia
-          laborum ad eaque repudiandae minus facere dolores deleniti quas
-          blanditiis aliquam qui hic voluptatem, sed exercitationem possimus.
-          Necessitatibus sequi accusamus maiores architecto veritatis rerum
-          velit adipisci voluptate explicabo, deleniti incidunt odio inventore
-          optio laudantium eveniet, laborum excepturi cum nam rem officiis
-          provident repudiandae fugit! Dolore sunt sit delectus earum? Explicabo
-          voluptas culpa perferendis voluptatem consectetur deleniti eius
-          quaerat fugit labore, distinctio, tempora, omnis quod veritatis
-          delectus vitae odit. Deleniti, cumque.
-        </p>
+        <p className="leading-normal whitespace-pre-line">{data.intro}</p>
       </section>
 
       <section className="flex flex-col my-6 space-y-10">
         {subSections.map((section, k) => (
-          <div key={k} className="flex space-x-6">
+          <div
+            key={k}
+            className="flex flex-col xl:flex-row xl:space-x-6 whitespace-pre-line"
+          >
             {k % 2 === 0 ? (
               <>
                 <div className="flex flex-col space-y-4 basis-3/5">
-                  <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-4/5">
+                  <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-4/5">
                     {section.title}
                   </h3>
+                  <div
+                    className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] xl:hidden"
+                    style={
+                      section.img
+                        ? {
+                            backgroundImage: `url("/${section.img.src}")`,
+                            backgroundPosition: "30% 60%",
+                            backgroundSize: "cover",
+                          }
+                        : undefined
+                    }
+                  ></div>
                   <div className="">
-                    <p className="leading-normal- ">{section.text}</p>
+                    <p className="leading-normal pb-6 lg:pb-0">
+                      {section.text}
+                    </p>
                     <Link
                       href="/"
-                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl float-right"
+                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
                     >
                       Discover more
                     </Link>
                   </div>
                 </div>
-                <div className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl"></div>
+                <div
+                  className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] hidden xl:block"
+                  style={
+                    section.img
+                      ? {
+                          backgroundImage: `url("/${section.img.src}")`,
+                          backgroundPosition: "30% 60%",
+                          backgroundSize: "cover",
+                        }
+                      : undefined
+                  }
+                ></div>
               </>
             ) : (
               <>
-                <div className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl"></div>
+                <div
+                  className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] hidden xl:block"
+                  style={
+                    section.img
+                      ? {
+                          backgroundImage: `url("/${section.img.src}")`,
+                          backgroundPosition: "30% 60%",
+                          backgroundSize: "cover",
+                        }
+                      : undefined
+                  }
+                ></div>
                 <div className="flex flex-col space-y-4 basis-3/5">
-                  <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-4/5">
+                  <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-4/5">
                     {section.title}
                   </h3>
+                  <div
+                    className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] xl:hidden"
+                    style={
+                      section.img
+                        ? {
+                            backgroundImage: `url("/${section.img.src}")`,
+                            backgroundPosition: "30% 60%",
+                            backgroundSize: "cover",
+                          }
+                        : undefined
+                    }
+                  ></div>
                   <div className="">
-                    <p className="leading-normal- ">{section.text}</p>
+                    <p className="leading-normal pb-6 lg:pb-0">
+                      {section.text}
+                    </p>
                     <Link
                       href="/"
-                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl float-right"
+                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
                     >
                       Discover more
                     </Link>
@@ -190,14 +186,17 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col my-6 space-y-10">
-        <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-5/12">
-          Government
+        <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-5/12">
+          Government Officials
         </h3>
-        <ul className="flex flex-wrap sm:flex-nowrap space-x-6 justify-between">
-          {govList.map((item, k) => (
-            <li key={k} className="flex flex-col basis-[32%] space-y-6">
+        <ul className="flex flex-col lg:flex-row lg:space-x-6 justify-between space-y-6 lg:space-y-0">
+          {data.officialsList.map((item, k) => (
+            <li
+              key={k}
+              className="flex flex-row lg:flex-col basis-[32%] lg:space-y-6"
+            >
               <div
-                className={`h-[220px] w-full bg-gray-200 rounded-tl-xl rounded-tr-xl relative overflow-hidden`}
+                className={`h-[220px] w-2/5 lg:w-full bg-gray-200 rounded-xl lg:rounded-none lg:rounded-tl-xl lg:rounded-tr-xl relative overflow-hidden`}
               >
                 <Image
                   src={item.img}
@@ -215,12 +214,9 @@ export default function Home() {
                   }}
                 ></div>
               </div>
-              <div className="px-6 flex justify-between">
-                <div className="flex flex-col space-y-3">
+              <div className="px-6 flex flex-col space-y-3 w-3/5">
+                <div className="flex justify-between">
                   <h4>{item.title}</h4>
-                  <p className="text-2xl font-semibold">{item.name}</p>
-                </div>
-                <div>
                   <Link
                     href={item.href}
                     target="_blank"
@@ -228,6 +224,9 @@ export default function Home() {
                   >
                     {item.href.split("https://www.")[1]}
                   </Link>
+                </div>
+                <div>
+                  <p className="text-2xl font-semibold">{item.name}</p>
                 </div>
               </div>
             </li>
@@ -242,38 +241,21 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col my-6 space-y-6">
-        <p className="leading-normal">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis vel
-          aut perspiciatis voluptatem eligendi temporibus, reprehenderit,
-          voluptate, consequatur quo magni ratione recusandae. Sapiente error,
-          rem quis iure, dolores, laboriosam incidunt distinctio minus eveniet
-          accusamus architecto in consectetur repudiandae vero unde explicabo
-          aliquam amet ullam ipsam atque quisquam. Molestias tempora mollitia
-          laborum ad eaque repudiandae minus facere dolores deleniti quas
-          blanditiis aliquam qui hic voluptatem, sed exercitationem possimus.
-          Necessitatibus sequi accusamus maiores architecto veritatis rerum
-          velit adipisci voluptate explicabo, deleniti incidunt odio inventore
-          optio laudantium eveniet, laborum excepturi cum nam rem officiis
-          provident repudiandae fugit! Dolore sunt sit delectus earum? Explicabo
-          voluptas culpa perferendis voluptatem consectetur deleniti eius
-          quaerat fugit labore, distinctio, tempora, omnis quod veritatis
-          delectus vitae odit. Deleniti, cumque.
-        </p>
+        <p className="leading-normal whitespace-pre-line">{data.outro}</p>
       </section>
 
-      <section className="flex flex-wrap my-6 mb-12 justify-between items-start">
-        <div className="flex flex-col space-y-6 basis-5/12">
+      <section className="flex flex-col xl:flex-row my-6 mb-12 justify-between items-start lg:space-x-8 space-y-10 xl:space-y-0">
+        <div className="flex flex-col space-y-6 basis-4/12">
           <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl min-w-5/12">
-            Have a question?
+            {data.question.title}
           </h3>
-          <p className="leading-normal">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione nam
-            aliquid tempore pariatur perferendis labore eius explicabo dolorum
-            atque! Quam natus veritatis impedit incidunt modi! Fuga, culpa
-            rerum?
+          <p className="leading-normal whitespace-pre-line">
+            {data.question.text}
           </p>
         </div>
-        <QuestionForm />
+        <div className="flex-grow">
+          <QuestionForm />
+        </div>
       </section>
     </main>
   );
