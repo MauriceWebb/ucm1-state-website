@@ -1,29 +1,55 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Inter } from "next/font/google";
-import "./globals.css";
+"use client";
+
 import { VaFlagVirtusIcon } from "@/assets/icons/flag-virginia-icon-virtus";
+import { Inter } from "next/font/google";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Virginia State website",
-  description: "State website for Virginia",
-};
-
 const cityLinks = [
-  { label: "Richmond", href: "/city/richmond" },
-  { label: "Virginia Beach", href: "/city/virginia-beach" },
-  { label: "Arlington", href: "/city/arlington" },
+  { label: "Richmond", href: "/city/richmond", title: "City of Richmond" },
+  {
+    label: "Virginia Beach",
+    href: "/city/virginia-beach",
+    title: "City of Virginia Beach",
+  },
+  { label: "Arlington", href: "/city/arlington", title: "City of Arlington" },
 ];
+
+const meta = {
+  virginia: {
+    title: "State of Virginia",
+    desc: "Website for the state of Virginia, created by Maurice Webb.",
+  },
+  richmond: {
+    title: "City of Richmond",
+    desc: "The state's capitol",
+  },
+  "virginia-beach": {
+    title: "City of Virginia Beach",
+    desc: "",
+  },
+  arlington: {
+    title: "City of Arlington",
+    desc: "",
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const p = usePathname();
+  const k = p === "/" ? "virginia" : (p.split("/")[2] as keyof typeof meta);
   return (
     <html lang="en">
+      <head>
+        <title>{meta[k].title}</title>
+        <meta name="description" content={meta[k].desc || meta[k].title} />
+      </head>
       <body
         className={`${inter.className} flex flex-col min-h-screen w-full justify-between`}
       >

@@ -66,7 +66,7 @@ export const cityCopy: {
   arlington: CityCopyType;
 } = {
   richmond: {
-    title: "City of Richmond",
+    title: "City of Richmond - The state's capitol",
     heroImg: {
       src: "richmond-1.jpg",
       altText:
@@ -127,7 +127,7 @@ export const cityCopy: {
       },
       button: {
         text: "Discover more",
-        href: "/",
+        href: "https://www.nationalgeographic.com/travel/destination/richmond",
       },
     },
     demo: {
@@ -140,7 +140,7 @@ export const cityCopy: {
       },
       button: {
         text: "Discover more",
-        href: "/",
+        href: "https://datausa.io/profile/geo/richmond-va#demographics",
       },
     },
     eco: {
@@ -152,7 +152,7 @@ export const cityCopy: {
       },
       button: {
         text: "Discover more",
-        href: "/",
+        href: "https://datausa.io/profile/geo/richmond-va#economy",
       },
     },
     outro:
@@ -222,7 +222,7 @@ export const cityCopy: {
       },
       button: {
         text: "Discover more",
-        href: "/",
+        href: "https://www.city-data.com/us-cities/The-South/Virginia-Beach-Geography-and-Climate.html",
       },
     },
     demo: {
@@ -234,7 +234,7 @@ export const cityCopy: {
       },
       button: {
         text: "Discover more",
-        href: "/",
+        href: "https://datausa.io/profile/geo/virginia-beach-va#demographics",
       },
     },
     eco: {
@@ -246,7 +246,7 @@ export const cityCopy: {
       },
       button: {
         text: "Discover more",
-        href: "/",
+        href: "https://datausa.io/profile/geo/virginia-beach-va#economy",
       },
     },
     outro:
@@ -312,7 +312,7 @@ export const cityCopy: {
       },
       button: {
         text: "Discover more",
-        href: "/",
+        href: "https://kids.kiddle.co/Arlington_County,_Virginia#Geography",
       },
     },
     demo: {
@@ -324,7 +324,7 @@ export const cityCopy: {
       },
       button: {
         text: "Discover more",
-        href: "/",
+        href: "https://datausa.io/profile/geo/arlington-va#demographics",
       },
     },
     eco: {
@@ -336,7 +336,7 @@ export const cityCopy: {
       },
       button: {
         text: "Discover more",
-        href: "/",
+        href: "https://datausa.io/profile/geo/arlington-va#economy",
       },
     },
     outro:

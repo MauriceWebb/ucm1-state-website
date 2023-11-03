@@ -53,19 +53,51 @@ export default function RootLayout({
       </section>
 
       <section className="flex flex-col my-6 space-y-10">
-        {subSections.map((section, k) => (
-          <div
-            key={k}
-            className="flex flex-col xl:flex-row xl:space-x-6 whitespace-pre-line"
-          >
-            {k % 2 === 0 ? (
-              <>
-                <div className="flex flex-col space-y-4 basis-3/5">
-                  <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-4/5">
-                    {section.title}
-                  </h3>
+        {subSections.map((section, k) => {
+          const slug = section.title.toLowerCase().replace(/\s+/g, "-");
+          return (
+            <div
+              key={k}
+              className="flex flex-col xl:flex-row xl:space-x-6 whitespace-pre-line"
+            >
+              {k % 2 === 0 ? (
+                <>
+                  <div className="flex flex-col space-y-4 basis-3/5">
+                    <h3
+                      id={slug}
+                      className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-4/5"
+                    >
+                      <Link href={"#" + slug}>{section.title}</Link>
+                    </h3>
+                    <div
+                      className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] xl:hidden"
+                      style={
+                        section.img
+                          ? {
+                              backgroundImage: `url("/${section.img.src}")`,
+                              backgroundPosition: "30% 60%",
+                              backgroundSize: "cover",
+                            }
+                          : undefined
+                      }
+                    ></div>
+                    <div className="">
+                      <p className="leading-normal pb-6 lg:pb-0">
+                        {section.text}
+                      </p>
+                      <Link
+                        href={section.button.href}
+                        target={
+                          section.button.href !== "/" ? "_blank" : undefined
+                        }
+                        className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
+                      >
+                        {section.button.text}
+                      </Link>
+                    </div>
+                  </div>
                   <div
-                    className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] xl:hidden"
+                    className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] hidden xl:block"
                     style={
                       section.img
                         ? {
@@ -76,51 +108,11 @@ export default function RootLayout({
                         : undefined
                     }
                   ></div>
-                  <div className="">
-                    <p className="leading-normal pb-6 lg:pb-0">
-                      {section.text}
-                    </p>
-                    <Link
-                      href="/"
-                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
-                    >
-                      Discover more
-                    </Link>
-                  </div>
-                </div>
-                <div
-                  className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] hidden xl:block"
-                  style={
-                    section.img
-                      ? {
-                          backgroundImage: `url("/${section.img.src}")`,
-                          backgroundPosition: "30% 60%",
-                          backgroundSize: "cover",
-                        }
-                      : undefined
-                  }
-                ></div>
-              </>
-            ) : (
-              <>
-                <div
-                  className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] hidden xl:block"
-                  style={
-                    section.img
-                      ? {
-                          backgroundImage: `url("/${section.img.src}")`,
-                          backgroundPosition: "30% 60%",
-                          backgroundSize: "cover",
-                        }
-                      : undefined
-                  }
-                ></div>
-                <div className="flex flex-col space-y-4 basis-3/5">
-                  <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-4/5">
-                    {section.title}
-                  </h3>
+                </>
+              ) : (
+                <>
                   <div
-                    className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] xl:hidden"
+                    className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] hidden xl:block"
                     style={
                       section.img
                         ? {
@@ -131,22 +123,45 @@ export default function RootLayout({
                         : undefined
                     }
                   ></div>
-                  <div className="">
-                    <p className="leading-normal pb-6 lg:pb-0">
-                      {section.text}
-                    </p>
-                    <Link
-                      href="/"
-                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
+                  <div className="flex flex-col space-y-4 basis-3/5">
+                    <h3
+                      id={slug}
+                      className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-4/5"
                     >
-                      Discover more
-                    </Link>
+                      <Link href={"#" + slug}>{section.title}</Link>
+                    </h3>
+                    <div
+                      className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] xl:hidden"
+                      style={
+                        section.img
+                          ? {
+                              backgroundImage: `url("/${section.img.src}")`,
+                              backgroundPosition: "30% 60%",
+                              backgroundSize: "cover",
+                            }
+                          : undefined
+                      }
+                    ></div>
+                    <div className="">
+                      <p className="leading-normal pb-6 lg:pb-0">
+                        {section.text}
+                      </p>
+                      <Link
+                        href={section.button.href}
+                        target={
+                          section.button.href !== "/" ? "_blank" : undefined
+                        }
+                        className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
+                      >
+                        {section.button.text}
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </>
-            )}
-          </div>
-        ))}
+                </>
+              )}
+            </div>
+          );
+        })}
       </section>
 
       <section className="flex flex-col my-6 mb-12 space-y-6">

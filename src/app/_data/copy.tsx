@@ -91,7 +91,7 @@ export const stateCopy: StateCopyType = {
       "Experience the vibrant tech scene in Northern Virginia.",
     ],
     button: {
-      href: "/",
+      href: "https://www.visittheusa.com/state/virginia",
       text: "Discover more",
     },
   },
@@ -118,7 +118,7 @@ export const stateCopy: StateCopyType = {
       altText: "",
     },
     button: {
-      href: "/",
+      href: "https://www.doe.virginia.gov/teaching-learning-assessment/k-12-standards-instruction/history-and-social-science/virginia-s-first-people-past-and-present/geography",
       text: "Discover more",
     },
   },
@@ -130,7 +130,7 @@ export const stateCopy: StateCopyType = {
       altText: "",
     },
     button: {
-      href: "/",
+      href: "https://datausa.io/profile/geo/virginia#demographics",
       text: "Discover more",
     },
   },
@@ -142,7 +142,7 @@ export const stateCopy: StateCopyType = {
       altText: "",
     },
     button: {
-      href: "/",
+      href: "https://datausa.io/profile/geo/virginia#economy",
       text: "Discover more",
     },
   },
@@ -162,7 +162,7 @@ export const stateCopy: StateCopyType = {
       url: "https://www.ltgov.virginia.gov/media/governorvirginiagov/lieutenant-governor/about/images/Lt-Gov.jpg",
     },
     {
-      title: "Attornet General",
+      title: "Attorney General",
       name: "Jason S. Miyares",
       href: "https://www.oag.state.va.us",
       img: "/Miyares-headshot-1.jpg",
