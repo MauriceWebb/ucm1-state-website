@@ -16,7 +16,7 @@ export default function RootLayout({
   const subSections = [data.geo, data.demo, data.eco];
 
   return (
-    <main className="flex-grow container flex flex-col mx-auto px-3 sm:px-0">
+    <main className="flex-grow flex flex-col mx-auto px-3 lg:px-0">
       <section className="mt-12 flex flex-col my-6 space-y-6">
         <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl">
           {data.title}
@@ -32,16 +32,16 @@ export default function RootLayout({
         <p className="leading-normal whitespace-pre-line">{data.intro}</p>
       </section>
 
-      <section className="flex min-h-[80px] items-center my-6">
-        <ul className="flex flex-wrap items-center w-full justify-around- overflow-x-auto- space-y-3 xl:space-y-0">
+      <section className="my-6 w-full">
+        <ul className="flex flex-col lg:flex-row flex-wrap w-full lg:justify-between space-y-3 lg:space-y-0">
           {data.statList.map((item, k) => (
-            <li key={k} className="flex basis-64 w-64 space-x-4">
-              <div className="rounded-xl h-[60px] w-[60px] bg-[#00297b] text-white flex justify-center items-center text-3xl">
+            <li key={k} className="flex space-x-4">
+              <div className="rounded-xl h-[50px] w-[50px] bg-[#00297b] text-white flex justify-center items-center text-3xl">
                 {item.icon}
               </div>
               <div className="flex flex-col justify-center">
-                <h4 className="text-lg font-semibold">{item.label}</h4>
-                <p>{item.stat}</p>
+                <h4 className="text-xs uppercase font-bold">{item.label}</h4>
+                <p className="text-sm">{item.stat}</p>
               </div>
             </li>
           ))}
@@ -62,15 +62,15 @@ export default function RootLayout({
             >
               {k % 2 === 0 ? (
                 <>
-                  <div className="flex flex-col space-y-4 basis-3/5">
+                  <div>
                     <h3
                       id={slug}
-                      className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-4/5"
+                      className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl min-w-fit w-3/5 mb-6"
                     >
                       <Link href={"#" + slug}>{section.title}</Link>
                     </h3>
                     <div
-                      className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] xl:hidden"
+                      className="basis-2/5 w-3/5 bg-gray-200 rounded-xl min-h-[250px] hidden md:block float-right ml-4 mb-3"
                       style={
                         section.img
                           ? {
@@ -81,57 +81,43 @@ export default function RootLayout({
                           : undefined
                       }
                     ></div>
-                    <div className="">
-                      <p className="leading-normal pb-6 lg:pb-0">
-                        {section.text}
-                      </p>
-                      <Link
-                        href={section.button.href}
-                        target={
-                          section.button.href !== "/" ? "_blank" : undefined
-                        }
-                        className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
-                      >
-                        {section.button.text}
-                      </Link>
-                    </div>
+                    <div
+                      className="basis-2/5 w-full h-full flex-grow bg-gray-200 rounded-xl min-h-[250px] md:hidden mb-6"
+                      style={
+                        section.img
+                          ? {
+                              backgroundImage: `url("/${section.img.src}")`,
+                              backgroundPosition: "30% 60%",
+                              backgroundSize: "cover",
+                            }
+                          : undefined
+                      }
+                    ></div>
+                    <p className="leading-normal pb-6 lg:pb-0">
+                      {section.text}
+                    </p>
+                    <Link
+                      href={section.button.href}
+                      target={
+                        section.button.href !== "/" ? "_blank" : undefined
+                      }
+                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
+                    >
+                      {section.button.text}
+                    </Link>
                   </div>
-                  <div
-                    className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] hidden xl:block"
-                    style={
-                      section.img
-                        ? {
-                            backgroundImage: `url("/${section.img.src}")`,
-                            backgroundPosition: "30% 60%",
-                            backgroundSize: "cover",
-                          }
-                        : undefined
-                    }
-                  ></div>
                 </>
               ) : (
                 <>
-                  <div
-                    className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] hidden xl:block"
-                    style={
-                      section.img
-                        ? {
-                            backgroundImage: `url("/${section.img.src}")`,
-                            backgroundPosition: "30% 60%",
-                            backgroundSize: "cover",
-                          }
-                        : undefined
-                    }
-                  ></div>
-                  <div className="flex flex-col space-y-4 basis-3/5">
+                  <div>
                     <h3
                       id={slug}
-                      className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-4/5"
+                      className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl min-w-fit w-3/5 mb-6 ml-auto"
                     >
                       <Link href={"#" + slug}>{section.title}</Link>
                     </h3>
                     <div
-                      className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] xl:hidden"
+                      className="basis-2/5 w-3/5 bg-gray-200 rounded-xl min-h-[250px] hidden md:block float-left mr-4 mb-3"
                       style={
                         section.img
                           ? {
@@ -142,20 +128,30 @@ export default function RootLayout({
                           : undefined
                       }
                     ></div>
-                    <div className="">
-                      <p className="leading-normal pb-6 lg:pb-0">
-                        {section.text}
-                      </p>
-                      <Link
-                        href={section.button.href}
-                        target={
-                          section.button.href !== "/" ? "_blank" : undefined
-                        }
-                        className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
-                      >
-                        {section.button.text}
-                      </Link>
-                    </div>
+                    <div
+                      className="basis-2/5 w-full h-full flex-grow bg-gray-200 rounded-xl min-h-[250px] md:hidden mb-6"
+                      style={
+                        section.img
+                          ? {
+                              backgroundImage: `url("/${section.img.src}")`,
+                              backgroundPosition: "30% 60%",
+                              backgroundSize: "cover",
+                            }
+                          : undefined
+                      }
+                    ></div>
+                    <p className="leading-normal pb-6 lg:pb-0">
+                      {section.text}
+                    </p>
+                    <Link
+                      href={section.button.href}
+                      target={
+                        section.button.href !== "/" ? "_blank" : undefined
+                      }
+                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
+                    >
+                      {section.button.text}
+                    </Link>
                   </div>
                 </>
               )}

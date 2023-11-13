@@ -53,8 +53,8 @@ export default function RootLayout({
       <body
         className={`${inter.className} flex flex-col min-h-screen w-full justify-between`}
       >
-        <header className="bg-[#00297b] min-h-[60px] py-6 text-white px-3 sm:px-0">
-          <ul className="container flex flex-col sm:flex-row sm:flex-wrap justify-between sm:items-center h-full sm:mx-auto space-y-3">
+        <header className="bg-[#00297b] min-h-[60px] py-6 text-white px-3 lg:px-0">
+          <ul className="container max-w-[960px] flex flex-col sm:flex-row sm:flex-wrap justify-between sm:items-center h-full sm:mx-auto space-y-3">
             <li>
               <Link href={"/"} className="flex items-center font-semibold">
                 <VaFlagVirtusIcon height={40} width={30} />
@@ -81,7 +81,7 @@ export default function RootLayout({
         </header>
         {children}
         <footer className="bg-[#00297b] min-h-[200px] text-white py-6 px-3 sm:px-0">
-          <ul className="container flex flex-col h-full mx-auto space-y-3">
+          <ul className="container max-w-[960px] flex flex-col h-full mx-auto space-y-3">
             <li>
               <Link
                 href={"/"}
@@ -93,7 +93,7 @@ export default function RootLayout({
             </li>
             <li>
               <nav className="ml-0">
-                <ul className="container flex flex-col sm:flex-row sm:flex-wrap justify-between sm:items-center h-full sm:mx-auto space-y-3">
+                <ul className="container max-w-[960px] flex flex-col sm:flex-row sm:flex-wrap justify-between sm:items-center h-full sm:mx-auto space-y-3">
                   <li>
                     <ul className="flex flex-col sm:flex-row flex-wrap justify-between sm:space-x-2">
                       {cityLinks.map((city, k) => (
@@ -109,7 +109,7 @@ export default function RootLayout({
                     </ul>
                   </li>
                 </ul>
-                <p className="ml-3 mt-2">
+                <p className="ml-3 mt-4">
                   Developed by{" "}
                   <Link
                     href={"https://www.webbcraft.dev/about"}

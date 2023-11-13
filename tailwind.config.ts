@@ -9,7 +9,7 @@ const config: Config = {
     "./src/@/**/*.{ts,tsx}",
   ],
   theme: {
-    // container: {
+    // container max-w-[960px]: {
     //   center: true,
     //   padding: "2rem",
     //   screens: {

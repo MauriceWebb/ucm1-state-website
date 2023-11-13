@@ -155,7 +155,7 @@ export const stateCopy: StateCopyType = {
       url: "https://www.governor.virginia.gov/media/governorvirginiagov/governor-of-virginia/images/youngkin_glenn_governor_portrait_2023.jpg",
     },
     {
-      title: "Lieutenant Governor",
+      title: "Lt. Governor",
       name: "Winsome Earle-Sears",
       href: "https://www.ltgov.virginia.gov",
       img: "/Lt-Gov.jpg",

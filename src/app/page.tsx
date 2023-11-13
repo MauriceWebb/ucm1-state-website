@@ -8,7 +8,7 @@ const subSections = [data.geo, data.demo, data.eco];
 
 export default function Home() {
   return (
-    <main className="flex-grow container flex flex-col mx-auto px-3 sm:px-0">
+    <main className="flex-grow flex flex-col mx-auto px-3 lg:px-0">
       <section className="flex flex-col lg:flex-row lg:space-x-6 my-6 mt-12">
         <div className="w-full lg:w-1/2 min-h-[350px] flex-grow bg-green-200 rounded-xl overflow-hidden lg:flex mb-6 lg:mb-0 hidden">
           <iframe
@@ -44,33 +44,41 @@ export default function Home() {
           <div className="flex flex-col space-y-3">
             <h4 className="font-semibold text-lg">Top 5 places to visit:</h4>
             <div className="flex flex-col xl:flex-row justify-between">
-              <ol type="1" className="list-decimal ml-5 mb-6 xl:mb-0">
-                {data.aside.list.map((a, k) => (
-                  <li key={k}>{a}</li>
-                ))}
+              <ol type="1" className="list-decimal ml-5">
+                {data.aside.list.map((a, k) => {
+                  return k === data.aside.list.length - 2 ? (
+                    <li key={k}>
+                      <p className="float-left">{a}</p>
+                      <Link
+                        href={data.aside.button.href}
+                        target={
+                          data.aside.button.href !== "/" ? "_blank" : undefined
+                        }
+                        className="py-2 px-4 bg-red-600 text-white rounded-xl mt-4 ml-auto md:mt-auto- min-w-fit float-right"
+                      >
+                        {data.aside.button.text}
+                      </Link>
+                    </li>
+                  ) : (
+                    <li key={k}>{a}</li>
+                  );
+                })}
               </ol>
-              <Link
-                href={data.aside.button.href}
-                target={data.aside.button.href !== "/" ? "_blank" : undefined}
-                className="py-2 px-4 bg-red-600 text-white rounded-xl mt-4 md:mt-auto w-fit"
-              >
-                {data.aside.button.text}
-              </Link>
             </div>
           </div>
         </aside>
       </section>
 
-      <section className="flex min-h-[80px] items-center my-6">
-        <ul className="flex flex-wrap items-center w-full justify-around- overflow-x-auto- space-y-3 xl:space-y-0">
+      <section className="my-6 w-full">
+        <ul className="flex flex-col lg:flex-row flex-wrap w-full lg:justify-between space-y-3 lg:space-y-0">
           {data.statList.map((item, k) => (
-            <li key={k} className="flex basis-64 w-64 space-x-4">
-              <div className="rounded-xl h-[60px] w-[60px] bg-[#00297b] text-white flex justify-center items-center text-3xl">
+            <li key={k} className="flex space-x-4">
+              <div className="rounded-xl h-[50px] w-[50px] bg-[#00297b] text-white flex justify-center items-center text-3xl">
                 {item.icon}
               </div>
               <div className="flex flex-col justify-center">
-                <h4 className="text-lg font-semibold">{item.label}</h4>
-                <p>{item.stat}</p>
+                <h4 className="text-xs uppercase font-bold">{item.label}</h4>
+                <p className="text-sm">{item.stat}</p>
               </div>
             </li>
           ))}
@@ -99,15 +107,15 @@ export default function Home() {
             >
               {k % 2 === 0 ? (
                 <>
-                  <div className="flex flex-col space-y-4 basis-3/5">
+                  <div>
                     <h3
                       id={slug}
-                      className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-4/5"
+                      className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl min-w-fit w-3/5 mb-6"
                     >
                       <Link href={"#" + slug}>{section.title}</Link>
                     </h3>
                     <div
-                      className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] xl:hidden"
+                      className="basis-2/5 w-3/5 bg-gray-200 rounded-xl min-h-[250px] hidden md:block float-right ml-4 mb-3"
                       style={
                         section.img
                           ? {
@@ -118,57 +126,43 @@ export default function Home() {
                           : undefined
                       }
                     ></div>
-                    <div className="">
-                      <p className="leading-normal pb-6 lg:pb-0">
-                        {section.text}
-                      </p>
-                      <Link
-                        href={section.button.href}
-                        target={
-                          section.button.href !== "/" ? "_blank" : undefined
-                        }
-                        className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
-                      >
-                        {section.button.text}
-                      </Link>
-                    </div>
+                    <div
+                      className="basis-2/5 w-full h-full flex-grow bg-gray-200 rounded-xl min-h-[250px] md:hidden mb-6"
+                      style={
+                        section.img
+                          ? {
+                              backgroundImage: `url("/${section.img.src}")`,
+                              backgroundPosition: "30% 60%",
+                              backgroundSize: "cover",
+                            }
+                          : undefined
+                      }
+                    ></div>
+                    <p className="leading-normal pb-6 lg:pb-0">
+                      {section.text}
+                    </p>
+                    <Link
+                      href={section.button.href}
+                      target={
+                        section.button.href !== "/" ? "_blank" : undefined
+                      }
+                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
+                    >
+                      {section.button.text}
+                    </Link>
                   </div>
-                  <div
-                    className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] hidden xl:block"
-                    style={
-                      section.img
-                        ? {
-                            backgroundImage: `url("/${section.img.src}")`,
-                            backgroundPosition: "30% 60%",
-                            backgroundSize: "cover",
-                          }
-                        : undefined
-                    }
-                  ></div>
                 </>
               ) : (
                 <>
-                  <div
-                    className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] hidden xl:block"
-                    style={
-                      section.img
-                        ? {
-                            backgroundImage: `url("/${section.img.src}")`,
-                            backgroundPosition: "30% 60%",
-                            backgroundSize: "cover",
-                          }
-                        : undefined
-                    }
-                  ></div>
-                  <div className="flex flex-col space-y-4 basis-3/5">
+                  <div>
                     <h3
                       id={slug}
-                      className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl w-full lg:w-4/5"
+                      className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl min-w-fit w-3/5 mb-6 ml-auto"
                     >
                       <Link href={"#" + slug}>{section.title}</Link>
                     </h3>
                     <div
-                      className="basis-2/5 w-full flex-grow bg-gray-200 rounded-xl min-h-[250px] xl:hidden"
+                      className="basis-2/5 w-3/5 bg-gray-200 rounded-xl min-h-[250px] hidden md:block float-left mr-4 mb-3"
                       style={
                         section.img
                           ? {
@@ -179,20 +173,30 @@ export default function Home() {
                           : undefined
                       }
                     ></div>
-                    <div className="">
-                      <p className="leading-normal pb-6 lg:pb-0">
-                        {section.text}
-                      </p>
-                      <Link
-                        href={section.button.href}
-                        target={
-                          section.button.href !== "/" ? "_blank" : undefined
-                        }
-                        className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
-                      >
-                        {section.button.text}
-                      </Link>
-                    </div>
+                    <div
+                      className="basis-2/5 w-full h-full flex-grow bg-gray-200 rounded-xl min-h-[250px] md:hidden mb-6"
+                      style={
+                        section.img
+                          ? {
+                              backgroundImage: `url("/${section.img.src}")`,
+                              backgroundPosition: "30% 60%",
+                              backgroundSize: "cover",
+                            }
+                          : undefined
+                      }
+                    ></div>
+                    <p className="leading-normal pb-6 lg:pb-0">
+                      {section.text}
+                    </p>
+                    <Link
+                      href={section.button.href}
+                      target={
+                        section.button.href !== "/" ? "_blank" : undefined
+                      }
+                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
+                    >
+                      {section.button.text}
+                    </Link>
                   </div>
                 </>
               )}
@@ -230,13 +234,13 @@ export default function Home() {
                   }}
                 ></div>
               </div>
-              <div className="px-6 flex flex-col space-y-3 w-3/5 lg:w-full border">
-                <div className="flex justify-between">
-                  <h4>{item.title}</h4>
+              <div className="px-6 flex flex-col space-y-3 w-3/5 lg:w-full">
+                <div className="flex flex-col lg:block">
+                  <h4 className="float-left">{item.title}</h4>
                   <Link
                     href={item.href}
                     target="_blank"
-                    className="text-[#00297b]"
+                    className="text-[#00297b] float-right"
                   >
                     {item.href.split("https://www.")[1]}
                   </Link>
