@@ -56,7 +56,12 @@ export default function RootLayout({
         <header className="bg-[#00297b] min-h-[60px] py-6 text-white px-3 lg:px-0">
           <ul className="container max-w-[960px] flex flex-col sm:flex-row sm:flex-wrap justify-between sm:items-center h-full sm:mx-auto space-y-3">
             <li>
-              <Link href={"/"} className="flex items-center font-semibold">
+              <Link
+                href={"/"}
+                className={`flex items-center font-semibold ${
+                  p !== "/" && "hover:text-red-600"
+                }`}
+              >
                 <VaFlagVirtusIcon height={40} width={30} />
                 <span className="ml-2">VIRGINIA</span>
               </Link>
@@ -64,16 +69,24 @@ export default function RootLayout({
             <li>
               <nav>
                 <ul className="flex flex-col sm:flex-row flex-wrap justify-between sm:space-x-2">
-                  {cityLinks.map((city, k) => (
-                    <li key={k}>
-                      <Link
-                        href={city.href}
-                        className="uppercase px-3 py-2 font-semibold"
-                      >
-                        {city.label}
-                      </Link>
-                    </li>
-                  ))}
+                  {cityLinks.map((city, k) => {
+                    const isActive = p
+                      .toLowerCase()
+                      .endsWith(city.label.toLowerCase().replace(/\s+/g, "-"));
+
+                    return (
+                      <li key={k}>
+                        <Link
+                          href={city.href}
+                          className={`uppercase px-3 py-2 font-semibold ${
+                            isActive ? "border-b-4 border-red-600" : ""
+                          } ${!isActive && "hover:text-red-600"}`}
+                        >
+                          {city.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             </li>
@@ -85,7 +98,9 @@ export default function RootLayout({
             <li>
               <Link
                 href={"/"}
-                className="flex items-center w-fit font-semibold"
+                className={`flex items-center font-semibold ${
+                  p !== "/" && "hover:text-red-600"
+                }`}
               >
                 <VaFlagVirtusIcon height={40} width={30} />
                 <span className="ml-2">VIRGINIA</span>
@@ -95,18 +110,26 @@ export default function RootLayout({
               <nav className="ml-0">
                 <ul className="container max-w-[960px] flex flex-col sm:flex-row sm:flex-wrap justify-between sm:items-center h-full sm:mx-auto space-y-3">
                   <li>
-                    <ul className="flex flex-col sm:flex-row flex-wrap justify-between sm:space-x-2">
-                      {cityLinks.map((city, k) => (
-                        <li key={k}>
-                          <Link
-                            href={city.href}
-                            className="uppercase px-3 py-2 font-semibold"
-                          >
-                            {city.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                  <ul className="flex flex-col sm:flex-row flex-wrap justify-between sm:space-x-2">
+                  {cityLinks.map((city, k) => {
+                    const isActive = p
+                      .toLowerCase()
+                      .endsWith(city.label.toLowerCase().replace(/\s+/g, "-"));
+
+                    return (
+                      <li key={k}>
+                        <Link
+                          href={city.href}
+                          className={`uppercase px-3 py-2 font-semibold ${
+                            isActive ? "border-b-4 border-red-600" : ""
+                          } ${!isActive && "hover:text-red-600"}`}
+                        >
+                          {city.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
                   </li>
                 </ul>
                 <p className="ml-3 mt-4">
