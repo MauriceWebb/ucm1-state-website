@@ -89,9 +89,10 @@ export default function Home() {
         <Image
           src={"/" + data.hero.img.src}
           width={960}
-          height={450}
+          height={340}
           alt={data.hero.img.altText}
-          className="bg-gray-200 rounded-xl object-cover"
+          priority
+          className="md:h-[450px] bg-gray-200 rounded-xl object-cover"
           style={{
             objectPosition: "30% 25%",
           }}
