@@ -142,6 +142,7 @@ export default function RootLayout({
                   <Link
                     href={"https://www.webbcraft.dev/about"}
                     target="_blank"
+                    className="hover:text-red-600"
                   >
                     Maurice Webb
                   </Link>
