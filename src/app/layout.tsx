@@ -47,8 +47,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>{meta[k].title}</title>
-        <meta name="description" content={meta[k].desc || meta[k].title} />
+        <title>{meta[k]?.title || ""}</title>
+        <meta
+          name="description"
+          content={meta[k]?.desc || meta[k]?.title || ""}
+        />
       </head>
       <body
         className={`${inter.className} flex flex-col min-h-screen w-full justify-between`}
@@ -110,26 +113,28 @@ export default function RootLayout({
               <nav className="ml-0">
                 <ul className="container max-w-[960px] flex flex-col sm:flex-row sm:flex-wrap justify-between sm:items-center h-full sm:mx-auto space-y-3">
                   <li>
-                  <ul className="flex flex-col sm:flex-row flex-wrap justify-between sm:space-x-2">
-                  {cityLinks.map((city, k) => {
-                    const isActive = p
-                      .toLowerCase()
-                      .endsWith(city.label.toLowerCase().replace(/\s+/g, "-"));
+                    <ul className="flex flex-col sm:flex-row flex-wrap justify-between sm:space-x-2">
+                      {cityLinks.map((city, k) => {
+                        const isActive = p
+                          .toLowerCase()
+                          .endsWith(
+                            city.label.toLowerCase().replace(/\s+/g, "-")
+                          );
 
-                    return (
-                      <li key={k}>
-                        <Link
-                          href={city.href}
-                          className={`uppercase px-3 py-2 font-semibold ${
-                            isActive ? "border-b-4 border-red-600" : ""
-                          } ${!isActive && "hover:text-red-600"}`}
-                        >
-                          {city.label}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
+                        return (
+                          <li key={k}>
+                            <Link
+                              href={city.href}
+                              className={`uppercase px-3 py-2 font-semibold ${
+                                isActive ? "border-b-4 border-red-600" : ""
+                              } ${!isActive && "hover:text-red-600"}`}
+                            >
+                              {city.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
                   </li>
                 </ul>
                 <p className="ml-3 mt-4">

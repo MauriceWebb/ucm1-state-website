@@ -15,15 +15,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Company } from "@/app/city/richmond/page";
+
 import Link from "next/link";
+import { CompanyType } from "@/app/city/_data/copy";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export const companiesTableColumns: ColumnDef<Company>[] = [
+export const companiesTableColumns: ColumnDef<CompanyType>[] = [
   { accessorKey: "name", header: "Name" },
   { accessorKey: "industry", header: "Industry" },
   { accessorKey: "salary", header: "Avg. Salary" },
@@ -32,7 +33,11 @@ export const companiesTableColumns: ColumnDef<Company>[] = [
     header: "Website",
     cell({ row }) {
       const link: string = row.getValue("link");
-      return <Link href={link} className="text-[#00297b] underline">{link}</Link>;
+      return (
+        <Link href={link} className="text-[#00297b] underline">
+          {link}
+        </Link>
+      );
     },
   },
 ];

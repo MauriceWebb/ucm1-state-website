@@ -2,6 +2,13 @@ import { FaLandmark, FaMapLocationDot, FaTreeCity } from "react-icons/fa6";
 import { IoIosPeople } from "react-icons/io";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 
+export type CompanyType = {
+  name: string;
+  industry: string;
+  salary: string;
+  link: string;
+};
+
 type CityCopyType = {
   title: string;
   heroImg: {
@@ -15,12 +22,7 @@ type CityCopyType = {
     stat: string;
     icon: any;
   }[];
-  companyList: {
-    name: string;
-    industry: string;
-    salary: string;
-    link: string;
-  }[];
+  companyList: CompanyType[];
   geo: {
     title: string;
     img: {
