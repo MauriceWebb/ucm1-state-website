@@ -86,14 +86,16 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col my-6 space-y-6">
-        <div
-          className={`h-[450px] bg-gray-200 rounded-xl`}
+        <Image
+          src={"/" + data.hero.img.src}
+          width={960}
+          height={450}
+          alt={data.hero.img.altText}
+          className="bg-gray-200 rounded-xl object-cover"
           style={{
-            backgroundImage: `url("/${data.hero.img.src}")`,
-            backgroundPosition: "30% 25%",
-            backgroundSize: "cover",
+            objectPosition: "30% 25%",
           }}
-        ></div>
+        />
         <p className="leading-normal whitespace-pre-line">{data.intro}</p>
       </section>
 
@@ -114,30 +116,26 @@ export default function Home() {
                     >
                       <Link href={"#" + slug}>{section.title}</Link>
                     </h3>
-                    <div
-                      className="basis-2/5 w-3/5 bg-gray-200 rounded-xl min-h-[250px] hidden md:block float-right ml-4 mb-3"
-                      style={
-                        section.img
-                          ? {
-                              backgroundImage: `url("/${section.img.src}")`,
-                              backgroundPosition: "30% 60%",
-                              backgroundSize: "cover",
-                            }
-                          : undefined
-                      }
-                    ></div>
-                    <div
-                      className="basis-2/5 w-full h-full flex-grow bg-gray-200 rounded-xl min-h-[250px] md:hidden mb-6"
-                      style={
-                        section.img
-                          ? {
-                              backgroundImage: `url("/${section.img.src}")`,
-                              backgroundPosition: "30% 60%",
-                              backgroundSize: "cover",
-                            }
-                          : undefined
-                      }
-                    ></div>
+                    <Image
+                      src={"/" + section.img.src}
+                      width={360}
+                      height={250}
+                      alt={section.img.altText}
+                      className="w-3/5 bg-gray-200 rounded-xl hidden md:block float-right ml-4 mb-3 object-cover"
+                      style={{
+                        objectPosition: "30% 60%",
+                      }}
+                    />
+                    <Image
+                      src={"/" + section.img.src}
+                      width={360}
+                      height={250}
+                      alt={section.img.altText}
+                      className="w-full bg-gray-200 rounded-xl h-[260px] md:hidden mb-6 object-cover"
+                      style={{
+                        objectPosition: "30% 60%",
+                      }}
+                    />
                     <p className="leading-normal pb-6 lg:pb-0">
                       {section.text}
                     </p>
@@ -146,7 +144,7 @@ export default function Home() {
                       target={
                         section.button.href !== "/" ? "_blank" : undefined
                       }
-                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
+                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right mt-3"
                     >
                       {section.button.text}
                     </Link>
@@ -161,30 +159,26 @@ export default function Home() {
                     >
                       <Link href={"#" + slug}>{section.title}</Link>
                     </h3>
-                    <div
-                      className="basis-2/5 w-3/5 bg-gray-200 rounded-xl min-h-[250px] hidden md:block float-left mr-4 mb-3"
-                      style={
-                        section.img
-                          ? {
-                              backgroundImage: `url("/${section.img.src}")`,
-                              backgroundPosition: "30% 60%",
-                              backgroundSize: "cover",
-                            }
-                          : undefined
-                      }
-                    ></div>
-                    <div
-                      className="basis-2/5 w-full h-full flex-grow bg-gray-200 rounded-xl min-h-[250px] md:hidden mb-6"
-                      style={
-                        section.img
-                          ? {
-                              backgroundImage: `url("/${section.img.src}")`,
-                              backgroundPosition: "30% 60%",
-                              backgroundSize: "cover",
-                            }
-                          : undefined
-                      }
-                    ></div>
+                    <Image
+                      src={"/" + section.img.src}
+                      width={360}
+                      height={250}
+                      alt={section.img.altText}
+                      className="w-3/5 h-auto bg-gray-200 rounded-xl hidden md:block float-left mr-4 mb-3 object-cover"
+                      style={{
+                        objectPosition: "30% 60%",
+                      }}
+                    />
+                    <Image
+                      src={"/" + section.img.src}
+                      width={360}
+                      height={250}
+                      alt={section.img.altText}
+                      className="w-full bg-gray-200 rounded-xl h-[260px] md:hidden mb-6 object-cover"
+                      style={{
+                        objectPosition: "60% 60%",
+                      }}
+                    />
                     <p className="leading-normal pb-6 lg:pb-0">
                       {section.text}
                     </p>
@@ -193,7 +187,7 @@ export default function Home() {
                       target={
                         section.button.href !== "/" ? "_blank" : undefined
                       }
-                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right"
+                      className="py-2 px-4 bg-[#00297b] text-white rounded-xl lg:float-right mt-3"
                     >
                       {section.button.text}
                     </Link>
@@ -222,17 +216,24 @@ export default function Home() {
                   src={item.img}
                   width={200}
                   height={150}
-                  alt={`Picture of ${item.title} ${item.name}.`}
+                  alt={
+                    item.title && item.name
+                      ? `Picture of ${item.title} ${item.name}.`
+                      : item.title
+                  }
                   className="h-full w-full object-center object-scale-down absolute z-10"
                 />
-                <div
-                  className="h-full w-full blur-sm"
-                  style={{
-                    backgroundImage: `url(${item.url})`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                  }}
-                ></div>
+                <Image
+                  src={item.img}
+                  width={200}
+                  height={150}
+                  alt={
+                    item.title && item.name
+                      ? `Picture of ${item.title} ${item.name}.`
+                      : item.title
+                  }
+                  className="h-full w-full object-center object-cover blur-sm"
+                />
               </div>
               <div className="px-6 flex flex-col space-y-3 w-3/5 lg:w-full">
                 <div className="flex flex-col lg:block">

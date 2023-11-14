@@ -54,7 +54,7 @@ export default function CompanyTable<TData, TValue>({
 
   return (
     <div className="rounded-xl border w-full overflow-hidden">
-      <Table>
+      <Table className="w-full">
         <TableHeader className="bg-[#00297b] text-white">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
