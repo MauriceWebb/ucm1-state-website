@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import QuestionForm from "@/components/QuestionForm";
-import Image from "next/image";
 import Link from "next/link";
 import { stateCopy as data } from "./_data/copy";
 
@@ -86,12 +86,9 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col my-6 space-y-6">
-        <Image
+        <img
           src={"/" + data.hero.img.src}
-          width={960}
-          height={340}
           alt={data.hero.img.altText}
-          priority
           className="md:h-[450px] bg-gray-200 rounded-xl object-cover"
           style={{
             objectPosition: "30% 25%",
@@ -117,20 +114,16 @@ export default function Home() {
                     >
                       <Link href={"#" + slug}>{section.title}</Link>
                     </h3>
-                    <Image
+                    <img
                       src={"/" + section.img.src}
-                      width={360}
-                      height={250}
                       alt={section.img.altText}
                       className="w-3/5 bg-gray-200 rounded-xl hidden md:block float-right ml-4 mb-3 object-cover"
                       style={{
                         objectPosition: "30% 60%",
                       }}
                     />
-                    <Image
+                    <img
                       src={"/" + section.img.src}
-                      width={360}
-                      height={250}
                       alt={section.img.altText}
                       className="w-full bg-gray-200 rounded-xl h-[260px] md:hidden mb-6 object-cover"
                       style={{
@@ -160,20 +153,16 @@ export default function Home() {
                     >
                       <Link href={"#" + slug}>{section.title}</Link>
                     </h3>
-                    <Image
+                    <img
                       src={"/" + section.img.src}
-                      width={360}
-                      height={250}
                       alt={section.img.altText}
                       className="w-3/5 h-auto bg-gray-200 rounded-xl hidden md:block float-left mr-4 mb-3 object-cover"
                       style={{
                         objectPosition: "30% 60%",
                       }}
                     />
-                    <Image
+                    <img
                       src={"/" + section.img.src}
-                      width={360}
-                      height={250}
                       alt={section.img.altText}
                       className="w-full bg-gray-200 rounded-xl h-[260px] md:hidden mb-6 object-cover"
                       style={{
@@ -213,10 +202,8 @@ export default function Home() {
               <div
                 className={`h-[220px] w-2/5 lg:w-full bg-gray-200 rounded-xl lg:rounded-none lg:rounded-tl-xl lg:rounded-tr-xl relative overflow-hidden`}
               >
-                <Image
+                <img
                   src={item.img}
-                  width={200}
-                  height={150}
                   alt={
                     item.title && item.name
                       ? `Picture of ${item.title} ${item.name}.`
@@ -224,10 +211,8 @@ export default function Home() {
                   }
                   className="h-full w-full object-center object-scale-down absolute z-10"
                 />
-                <Image
+                <img
                   src={item.img}
-                  width={200}
-                  height={150}
                   alt={
                     item.title && item.name
                       ? `Picture of ${item.title} ${item.name}.`
