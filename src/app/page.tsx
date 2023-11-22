@@ -251,7 +251,7 @@ export default function Home() {
         <p className="leading-normal whitespace-pre-line">{data.outro}</p>
       </section>
 
-      <section className="flex flex-col xl:flex-row my-6 mb-12 justify-between items-start lg:space-x-8 space-y-10 xl:space-y-0">
+      <section className="flex flex-col xl:flex-row my-6 mb-12 justify-between lg:space-x-8 space-y-10 xl:space-y-0">
         <div className="flex flex-col space-y-6 basis-4/12">
           <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl min-w-5/12">
             {data.question.title}

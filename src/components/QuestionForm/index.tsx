@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
 
 const formSchema = z.object({
   firstname: z.string().min(2, {
@@ -42,6 +43,7 @@ const formSchema = z.object({
 });
 
 export default function QuestionForm() {
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,13 +55,25 @@ export default function QuestionForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (values.confirmation !== values.email) {
+      form.setError("confirmation", {
+        type: "pattern",
+        message: `confirmation must match email`,
+      });
+      return;
+    }
+
     console.log(values);
+    form.reset();
+    setFormSubmitted(true);
+    await new Promise((resolve) => {
+      setTimeout(resolve, 3200);
+    });
+    setFormSubmitted(false);
   }
 
-  return (
+  return formSubmitted === false ? (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
@@ -157,5 +171,9 @@ export default function QuestionForm() {
         </div>
       </form>
     </Form>
+  ) : (
+    <div className="w-full h-full flex justify-center items-center">
+      <p className="text-green-600">We have received your question 🎉</p>
+    </div>
   );
 }
