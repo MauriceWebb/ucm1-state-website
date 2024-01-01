@@ -3,10 +3,23 @@
 import QuestionForm from "@/components/QuestionForm";
 import Link from "next/link";
 import { stateCopy as data } from "./_data/copy";
+import { useRef, useEffect } from "react";
 
 const subSections = [data.geo, data.demo, data.eco];
 
 export default function Home() {
+  const asideRef = useRef<HTMLElement | null>(null);
+  const asideCount = useRef(0);
+
+  // on page load:
+  useEffect(() => {
+    if (asideRef.current && asideCount.current < 1) {
+      asideRef.current.before(document.createComment("ASIDE START"));
+      asideRef.current.after(document.createComment("ASIDE END"));
+      asideCount.current++;
+    }
+  }, []);
+
   return (
     <main className="flex-grow flex flex-col mx-auto px-3 lg:px-0">
       <section className="flex flex-col lg:flex-row lg:space-x-6 my-6 mt-12">
@@ -22,7 +35,10 @@ export default function Home() {
             className="flex-grow"
           ></iframe>
         </div>
-        <aside className="w-full lg:basis-1/2 lg:w-1/2 flex-grow flex flex-col justify-between space-y-3">
+        <aside
+          ref={asideRef}
+          className="w-full lg:basis-1/2 lg:w-1/2 flex-grow flex flex-col justify-between space-y-3"
+        >
           <div className="space-y-3">
             <h3 className="bg-[#00297b] text-white py-2 px-6 rounded-xl text-xl mb-6">
               {data.aside.title}
@@ -48,7 +64,7 @@ export default function Home() {
                 {data.aside.list.map((a, k) => {
                   return k === data.aside.list.length - 2 ? (
                     <li key={k}>
-                      <p className="float-left">{a}</p>
+                      <p id="fifth-place-text">{a}</p>
                       <Link
                         href={data.aside.button.href}
                         target={
@@ -60,7 +76,9 @@ export default function Home() {
                       </Link>
                     </li>
                   ) : (
-                    <li key={k}>{a}</li>
+                    <li key={k}>
+                      <p>{a}</p>
+                    </li>
                   );
                 })}
               </ol>
@@ -200,7 +218,7 @@ export default function Home() {
               className="flex flex-row lg:flex-col basis-[32%] lg:space-y-6"
             >
               <div
-                className={`h-[220px] w-2/5 lg:w-full bg-gray-200 rounded-xl lg:rounded-none lg:rounded-tl-xl lg:rounded-tr-xl relative overflow-hidden`}
+                className={`bg-gray-200 rounded-xl lg:rounded-none lg:rounded-tl-xl lg:rounded-tr-xl overflow-hidden officials-list-image-container`}
               >
                 <img
                   src={item.img}
@@ -209,7 +227,7 @@ export default function Home() {
                       ? `Picture of ${item.title} ${item.name}.`
                       : item.title
                   }
-                  className="h-full w-full object-center object-scale-down absolute z-10"
+                  className="h-full w-full object-center object-scale-down z-10"
                 />
                 <img
                   src={item.img}

@@ -1,0 +1,42 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #00297b;
+}
+
+main {
+    width: 100%;
+    background-color: #fff;
+}
+
+section {
+    margin: auto;
+    max-width: 960px;
+}
+
+.officials-list-image-container {
+    position: relative;
+    height: 220px;
+    width: 40%;
+}
+
+.officials-list-image-container img:first-child {
+    position: absolute;
+}
+
+.city-link:hover {
+    --tw-text-opacity: 1;
+    color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+#fifth-place-text {
+    float: left;
+}
+
+@media (min-width: 1024px) {
+    .officials-list-image-container {
+        width: 100%;
+    }
+}

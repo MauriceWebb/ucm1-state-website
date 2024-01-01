@@ -14,6 +14,7 @@ import vaBeach3a from "../../../../public/va-beach-3.jpg";
 import vaBeach3b from "../../../../public/va-beach-3.webp";
 import vaBeach4 from "../../../../public/va-beach-4.jpeg";
 import { cityCopy } from "../_data/copy";
+import { cn } from "@/lib/utils";
 
 const cities = ["richmond", "virginia-beach", "arlington"];
 const images = {
@@ -62,17 +63,68 @@ export default function Page({ params }: any) {
 
       <section className="my-6 w-full">
         <ul className="flex flex-col lg:flex-row flex-wrap w-full lg:justify-between space-y-3 lg:space-y-0">
-          {data.statList.map((item, k) => (
-            <li key={k} className="flex space-x-4">
-              <div className="rounded-xl h-[50px] w-[50px] bg-[#00297b] text-white flex justify-center items-center text-3xl">
-                {item.icon}
-              </div>
-              <div className="flex flex-col justify-center">
-                <h4 className="text-xs uppercase font-bold">{item.label}</h4>
-                <p className="text-sm">{item.stat}</p>
-              </div>
-            </li>
-          ))}
+          {data.statList.map((item, k) => {
+            if (item.label === "Avg. Income") {
+              const cityName = slug?.charAt(0).toUpperCase() + slug?.slice(1);
+              const stateAvgIncome = 76398;
+              const stateAvgIncomeTxt = "$76,398";
+              const cityAvgIncome = parseInt(item.stat.replace(/\D/g, ""));
+              const isHigher = cityAvgIncome > stateAvgIncome;
+              const isLower = cityAvgIncome < stateAvgIncome;
+              const isSame = !isHigher && !isLower;
+              const percentage = Math.round(
+                (cityAvgIncome / stateAvgIncome) * 100 - 100
+              );
+              const statement = `${cityName}'s average income is ${
+                isSame
+                  ? "equal to"
+                  : `about ${percentage}% ${isHigher ? "higher" : "lower"} than`
+              } the state's average income of ${stateAvgIncomeTxt}.`;
+              return (
+                <li
+                  key={k}
+                  className="flex gap-x-4 group hover:cursor-pointer"
+                  title={statement}
+                >
+                  <div
+                    className={cn(
+                      "rounded-xl h-[50px] w-[50px] bg-[#00297b] text-white flex justify-center items-center text-3xl",
+                      {
+                        "group-hover:bg-green-600": isHigher,
+                        "group-hover:bg-red-600": isLower,
+                      }
+                    )}
+                  >
+                    {item.icon}
+                  </div>
+                  <div className="flex flex-col justify-center relative">
+                    <h4 className="text-xs uppercase font-bold">
+                      {item.label}
+                    </h4>
+                    <p
+                      className={cn("text-sm", {
+                        "text-green-600": isHigher,
+                        "text-red-600": isLower,
+                      })}
+                    >
+                      {item.stat}
+                    </p>
+                  </div>
+                </li>
+              );
+            }
+            return (
+              <li key={k} className="flex gap-x-4">
+                <div className="rounded-xl h-[50px] w-[50px] bg-[#00297b] text-white flex justify-center items-center text-3xl">
+                  {item.icon}
+                </div>
+                <div className="flex flex-col justify-center">
+                  <h4 className="text-xs uppercase font-bold">{item.label}</h4>
+                  <p className="text-sm">{item.stat}</p>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </section>
 

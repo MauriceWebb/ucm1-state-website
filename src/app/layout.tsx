@@ -52,6 +52,8 @@ export default function RootLayout({
           name="description"
           content={meta[k]?.desc || meta[k]?.title || ""}
         />
+        {/*eslint-disable-next-line @next/next/no-css-tags*/}
+        <link rel="stylesheet" href="/style.css" />
       </head>
       <body
         className={`${inter.className} flex flex-col min-h-screen w-full justify-between`}
@@ -62,7 +64,7 @@ export default function RootLayout({
               <Link
                 href={"/"}
                 className={`flex items-center font-semibold ${
-                  p !== "/" && "hover:text-red-600"
+                  p !== "/" && "city-link"
                 }`}
               >
                 <VaFlagVirtusIcon height={40} width={30} />
@@ -83,7 +85,7 @@ export default function RootLayout({
                           href={city.href}
                           className={`uppercase px-3 py-2 font-semibold ${
                             isActive ? "border-b-4 border-red-600" : ""
-                          } ${!isActive && "hover:text-red-600"}`}
+                          } ${!isActive && "city-link"}`}
                         >
                           {city.label}
                         </Link>
@@ -102,7 +104,7 @@ export default function RootLayout({
               <Link
                 href={"/"}
                 className={`flex items-center font-semibold ${
-                  p !== "/" && "hover:text-red-600"
+                  p !== "/" && "city-link"
                 }`}
               >
                 <VaFlagVirtusIcon height={40} width={30} />
@@ -127,7 +129,7 @@ export default function RootLayout({
                               href={city.href}
                               className={`uppercase px-3 py-2 font-semibold ${
                                 isActive ? "border-b-4 border-red-600" : ""
-                              } ${!isActive && "hover:text-red-600"}`}
+                              } ${!isActive && "city-link"}`}
                             >
                               {city.label}
                             </Link>
@@ -142,7 +144,7 @@ export default function RootLayout({
                   <Link
                     href={"https://www.webbcraft.dev/about"}
                     target="_blank"
-                    className="hover:text-red-600"
+                    className="city-link"
                   >
                     Maurice Webb
                   </Link>
